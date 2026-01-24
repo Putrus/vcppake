@@ -1,10 +1,8 @@
-#include "../module/inc/Prettier.h"
-
-#include <iostream>
+#include "../inc/vcppake.h"
 
 int main()
 {
-   Prettier prettier;
-   std::cout << prettier.makePrettier("Hello world!") << std::endl;
+   Vcppake vcppake;
+   vcppake.run();
    return 0;
 }

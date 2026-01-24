@@ -7,53 +7,53 @@
    },
    "configurePresets": [
       {
-         "name": "base",
+         "name": "base-vcpkg",
          "hidden": true,
-         "description": "Base preset with common settings",
+         "description": "Base vcpkg preset with common settings",
          "binaryDir": "${sourceDir}/build/${presetName}",
          "toolchainFile": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
          "cacheVariables": {
             "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-            "BUILD_UT": "ON"
+            "BUILD_UNIT_TESTS": "ON"
          }
       },
       {
-         "name": "ninja",
-         "inherits": "base",
-         "displayName": "Ninja Multi-Config",
-         "description": "Configure with vcpkg toolchain and generate Ninja Multi-Config project files",
+         "name": "ninja-vcpkg",
+         "inherits": "base-vcpkg",
+         "displayName": "Ninja Multi-Config + vcpkg",
+         "description": "Configure project using Ninja Multi-Config generator with vcpkg toolchain",
          "generator": "Ninja Multi-Config"
       }
    ],
-   "buildPresets": [
+   "buildPresets": [ 
       {
-         "name": "ninja-debug",
-         "configurePreset": "ninja",
+         "name": "ninja-vcpkg-debug",
+         "configurePreset": "ninja-vcpkg",
          "displayName": "Build Ninja Debug",
-         "description": "Build with Ninja Multi-Config and vcpkg Debug",
+         "description": "Build debug for Ninja Multi-Config + vcpkg",
          "configuration": "Debug"
       },
       {
-         "name": "ninja-release",
-         "configurePreset": "ninja",
+         "name": "ninja-vcpkg-release",
+         "configurePreset": "ninja-vcpkg",
          "displayName": "Build Ninja Release",
-         "description": "Build with Ninja Multi-Config and vcpkg Release",
+         "description": "Build release for Ninja Multi-Config + vcpkg",
          "configuration": "Release"
       }
    ],
    "testPresets": [
       {
-         "name": "test-debug",
-         "configurePreset": "ninja",
-         "displayName": "Test Debug",
-         "description": "Run unit tests for Ninja Multi-Config Debug",
+         "name": "ninja-vcpkg-debug-test",
+         "configurePreset": "ninja-vcpkg",
+         "displayName": "Test Ninja Debug",
+         "description": "Run debug unit tests for Ninja Multi-Config + vcpkg",
          "configuration": "Debug"
       },
       {
-         "name": "test-release",
-         "configurePreset": "ninja",
-         "displayName": "Test Release",
-         "description": "Run unit tests for Ninja Multi-Config Release",
+         "name": "ninja-vcpkg-release-test",
+         "configurePreset": "ninja-vcpkg",
+         "displayName": "Test Ninja Release",
+         "description": "Run release unit tests for Ninja Multi-Config + vcpkg",
          "configuration": "Release"
       }
    ]

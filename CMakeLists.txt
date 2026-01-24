@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 4.2)
 project(vcppake
    VERSION 0.0.1
    LANGUAGES CXX
-   DESCRIPTION "Piece of cake. Modern C++ project template with CMake build system and vcpkg package manager."
+   DESCRIPTION "Template project description"
 )
 
 set(CMAKE_CXX_STANDARD 23)
@@ -12,13 +12,16 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(cmake/UpdateSubmodules.cmake)
 
+find_package(fmt CONFIG REQUIRED)
+
 set(SOURCES
-   src/main.cpp
+   src/vcppake.cpp
 )
 
-add_executable(vcppake ${SOURCES})
-target_link_libraries(vccpake PRIVATE module)
+add_executable(vcppake src/main.cpp ${SOURCES})
+target_link_libraries(vcppake PRIVATE fmt::fmt)
+add_library(vcppake_lib STATIC ${SOURCES})
+target_link_libraries(vcppake_lib PRIVATE fmt::fmt)
 
 include(CTest)
-add_subdirectory(module)
-add_subdirectory(module_ut)
+add_subdirectory(ut)
