@@ -16,7 +16,8 @@ set(SOURCES
    src/main.cpp
 )
 
-add_executable(vccpake ${SOURCES})
+add_executable(vcppake ${SOURCES})
+target_link_libraries(vccpake PRIVATE module)
 
 include(CTest)
 add_subdirectory(module)

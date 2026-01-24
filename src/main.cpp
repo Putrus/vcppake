@@ -1,7 +1,10 @@
+#include "../module/inc/Prettier.h"
+
 #include <iostream>
 
 int main()
 {
-   std::cout << "Hello world!" << std::endl;
+   Prettier prettier;
+   std::cout << prettier.makePrettier("Hello world!") << std::endl;
    return 0;
 }
